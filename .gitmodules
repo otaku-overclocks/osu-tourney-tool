@@ -1,0 +1,6 @@
+[submodule "OsuBeatmapDownloadLib"]
+	path = OsuBeatmapDownloadLib
+	url = https://github.com/EgorDm/OsuBeatmapDownloadLib
+[submodule "osu-database-reader"]
+	path = osu-database-reader
+	url = https://github.com/otaku-overclocks/osu-database-reader
