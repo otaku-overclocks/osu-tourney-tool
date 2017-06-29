@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A17549C4-024C-43BF-800B-AE267F59C1A0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>osu_tourney_tool</RootNamespace>
+    <AssemblyName>osu-tourney-tool</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="UI\Controls\MultiplayerGame.xaml.cs">
+      <DependentUpon>MultiplayerGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\MultiplayerScore.xaml.cs">
+      <DependentUpon>MultiplayerScore.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="UI\Controls\MultiplayerGame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Controls\MultiplayerScore.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fonts\Exo 2\Exo2-Black.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-BlackItalic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-Bold.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-BoldItalic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-ExtraBold.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-ExtraLight.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-Italic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-Light.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-LightItalic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-Medium.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-MediumItalic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-Regular.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-SemiBold.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-Thin.ttf" />
+    <Resource Include="Fonts\Exo 2\Exo2-ThinItalic.ttf" />
+    <Resource Include="Fonts\Venera\Venera-100.ttf" />
+    <Resource Include="Fonts\Venera\Venera-300.ttf" />
+    <Resource Include="Fonts\Venera\Venera-500.ttf" />
+    <Resource Include="Fonts\Venera\Venera-700.ttf" />
+    <Resource Include="Fonts\Venera\Venera-900.ttf" />
+    <None Include="Fonts\Venera\Venera_Personal_License.pdf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Flags\AD.png" />
+    <Resource Include="Assets\Flags\AE.png" />
+    <Resource Include="Assets\Flags\AG.png" />
+    <Resource Include="Assets\Flags\AL.png" />
+    <Resource Include="Assets\Flags\AM.png" />
+    <Resource Include="Assets\Flags\AR.png" />
+    <Resource Include="Assets\Flags\AT.png" />
+    <Resource Include="Assets\Flags\AU.png" />
+    <Resource Include="Assets\Flags\AZ.png" />
+    <Resource Include="Assets\Flags\BA.png" />
+    <Resource Include="Assets\Flags\BB.png" />
+    <Resource Include="Assets\Flags\BD.png" />
+    <Resource Include="Assets\Flags\BE.png" />
+    <Resource Include="Assets\Flags\BF.png" />
+    <Resource Include="Assets\Flags\BG.png" />
+    <Resource Include="Assets\Flags\BH.png" />
+    <Resource Include="Assets\Flags\BJ.png" />
+    <Resource Include="Assets\Flags\BN.png" />
+    <Resource Include="Assets\Flags\BO.png" />
+    <Resource Include="Assets\Flags\BR.png" />
+    <Resource Include="Assets\Flags\BS.png" />
+    <Resource Include="Assets\Flags\BT.png" />
+    <Resource Include="Assets\Flags\BW.png" />
+    <Resource Include="Assets\Flags\BY.png" />
+    <Resource Include="Assets\Flags\BZ.png" />
+    <Resource Include="Assets\Flags\CA.png" />
+    <Resource Include="Assets\Flags\CD.png" />
+    <Resource Include="Assets\Flags\CH.png" />
+    <Resource Include="Assets\Flags\CI.png" />
+    <Resource Include="Assets\Flags\CL.png" />
+    <Resource Include="Assets\Flags\CM.png" />
+    <Resource Include="Assets\Flags\CN.png" />
+    <Resource Include="Assets\Flags\CO.png" />
+    <Resource Include="Assets\Flags\CR.png" />
+    <Resource Include="Assets\Flags\CU.png" />
+    <Resource Include="Assets\Flags\CY.png" />
+    <Resource Include="Assets\Flags\CZ.png" />
+    <Resource Include="Assets\Flags\DE.png" />
+    <Resource Include="Assets\Flags\DJ.png" />
+    <Resource Include="Assets\Flags\DK.png" />
+    <Resource Include="Assets\Flags\DM.png" />
+    <Resource Include="Assets\Flags\DO.png" />
+    <Resource Include="Assets\Flags\DZ.png" />
+    <Resource Include="Assets\Flags\EC.png" />
+    <Resource Include="Assets\Flags\EE.png" />
+    <Resource Include="Assets\Flags\EG.png" />
+    <Resource Include="Assets\Flags\ES.png" />
+    <Resource Include="Assets\Flags\ET.png" />
+    <Resource Include="Assets\Flags\FI.png" />
+    <Resource Include="Assets\Flags\FJ.png" />
+    <Resource Include="Assets\Flags\FR.png" />
+    <Resource Include="Assets\Flags\GA.png" />
+    <Resource Include="Assets\Flags\GB.png" />
+    <Resource Include="Assets\Flags\GD.png" />
+    <Resource Include="Assets\Flags\GE.png" />
+    <Resource Include="Assets\Flags\GF.png" />
+    <Resource Include="Assets\Flags\GH.png" />
+    <Resource Include="Assets\Flags\GR.png" />
+    <Resource Include="Assets\Flags\GT.png" />
+    <Resource Include="Assets\Flags\GY.png" />
+    <Resource Include="Assets\Flags\HK.png" />
+    <Resource Include="Assets\Flags\HM.png" />
+    <Resource Include="Assets\Flags\HN.png" />
+    <Resource Include="Assets\Flags\HR.png" />
+    <Resource Include="Assets\Flags\HU.png" />
+    <Resource Include="Assets\Flags\IE.png" />
+    <Resource Include="Assets\Flags\IL.png" />
+    <Resource Include="Assets\Flags\IN.png" />
+    <Resource Include="Assets\Flags\IQ.png" />
+    <Resource Include="Assets\Flags\IR.png" />
+    <Resource Include="Assets\Flags\IS.png" />
+    <Resource Include="Assets\Flags\IT.png" />
+    <Resource Include="Assets\Flags\JM.png" />
+    <Resource Include="Assets\Flags\JO.png" />
+    <Resource Include="Assets\Flags\JP.png" />
+    <Resource Include="Assets\Flags\KE.png" />
+    <Resource Include="Assets\Flags\KH.png" />
+    <Resource Include="Assets\Flags\KN.png" />
+    <Resource Include="Assets\Flags\KR.png" />
+    <Resource Include="Assets\Flags\KW.png" />
+    <Resource Include="Assets\Flags\KZ.png" />
+    <Resource Include="Assets\Flags\LA.png" />
+    <Resource Include="Assets\Flags\LB.png" />
+    <Resource Include="Assets\Flags\LC.png" />
+    <Resource Include="Assets\Flags\LI.png" />
+    <Resource Include="Assets\Flags\LK.png" />
+    <Resource Include="Assets\Flags\LT.png" />
+    <Resource Include="Assets\Flags\LU.png" />
+    <Resource Include="Assets\Flags\LV.png" />
+    <Resource Include="Assets\Flags\LY.png" />
+    <Resource Include="Assets\Flags\MA.png" />
+    <Resource Include="Assets\Flags\MC.png" />
+    <Resource Include="Assets\Flags\MD.png" />
+    <Resource Include="Assets\Flags\ME.png" />
+    <Resource Include="Assets\Flags\MF.png" />
+    <Resource Include="Assets\Flags\MG.png" />
+    <Resource Include="Assets\Flags\MH.png" />
+    <Resource Include="Assets\Flags\MK.png" />
+    <Resource Include="Assets\Flags\MM.png" />
+    <Resource Include="Assets\Flags\MN.png" />
+    <Resource Include="Assets\Flags\MR.png" />
+    <Resource Include="Assets\Flags\MT.png" />
+    <Resource Include="Assets\Flags\MU.png" />
+    <Resource Include="Assets\Flags\MV.png" />
+    <Resource Include="Assets\Flags\MW.png" />
+    <Resource Include="Assets\Flags\MX.png" />
+    <Resource Include="Assets\Flags\MY.png" />
+    <Resource Include="Assets\Flags\MZ.png" />
+    <Resource Include="Assets\Flags\NA.png" />
+    <Resource Include="Assets\Flags\NE.png" />
+    <Resource Include="Assets\Flags\NG.png" />
+    <Resource Include="Assets\Flags\NI.png" />
+    <Resource Include="Assets\Flags\NL.png" />
+    <Resource Include="Assets\Flags\NO.png" />
+    <Resource Include="Assets\Flags\NP.png" />
+    <Resource Include="Assets\Flags\NZ.png" />
+    <Resource Include="Assets\Flags\OM.png" />
+    <Resource Include="Assets\Flags\PA.png" />
+    <Resource Include="Assets\Flags\PE.png" />
+    <Resource Include="Assets\Flags\PG.png" />
+    <Resource Include="Assets\Flags\PH.png" />
+    <Resource Include="Assets\Flags\PK.png" />
+    <Resource Include="Assets\Flags\PL.png" />
+    <Resource Include="Assets\Flags\PT.png" />
+    <Resource Include="Assets\Flags\PY.png" />
+    <Resource Include="Assets\Flags\QA.png" />
+    <Resource Include="Assets\Flags\RE.png" />
+    <Resource Include="Assets\Flags\RO.png" />
+    <Resource Include="Assets\Flags\RS.png" />
+    <Resource Include="Assets\Flags\RU.png" />
+    <Resource Include="Assets\Flags\SA.png" />
+    <Resource Include="Assets\Flags\SB.png" />
+    <Resource Include="Assets\Flags\SC.png" />
+    <Resource Include="Assets\Flags\SD.png" />
+    <Resource Include="Assets\Flags\SE.png" />
+    <Resource Include="Assets\Flags\SG.png" />
+    <Resource Include="Assets\Flags\SI.png" />
+    <Resource Include="Assets\Flags\SK.png" />
+    <Resource Include="Assets\Flags\SL.png" />
+    <Resource Include="Assets\Flags\SM.png" />
+    <Resource Include="Assets\Flags\SN.png" />
+    <Resource Include="Assets\Flags\SR.png" />
+    <Resource Include="Assets\Flags\ST.png" />
+    <Resource Include="Assets\Flags\SV.png" />
+    <Resource Include="Assets\Flags\SY.png" />
+    <Resource Include="Assets\Flags\TG.png" />
+    <Resource Include="Assets\Flags\TH.png" />
+    <Resource Include="Assets\Flags\TL.png" />
+    <Resource Include="Assets\Flags\TN.png" />
+    <Resource Include="Assets\Flags\TR.png" />
+    <Resource Include="Assets\Flags\TT.png" />
+    <Resource Include="Assets\Flags\TW.png" />
+    <Resource Include="Assets\Flags\TZ.png" />
+    <Resource Include="Assets\Flags\UA.png" />
+    <Resource Include="Assets\Flags\unknown.png" />
+    <Resource Include="Assets\Flags\US.png" />
+    <Resource Include="Assets\Flags\UY.png" />
+    <Resource Include="Assets\Flags\UZ.png" />
+    <Resource Include="Assets\Flags\VA.png" />
+    <Resource Include="Assets\Flags\VC.png" />
+    <Resource Include="Assets\Flags\VE.png" />
+    <Resource Include="Assets\Flags\VN.png" />
+    <Resource Include="Assets\Flags\VU.png" />
+    <Resource Include="Assets\Flags\YE.png" />
+    <Resource Include="Assets\Flags\ZA.png" />
+    <Resource Include="Assets\Flags\ZM.png" />
+    <Resource Include="Assets\Mods\AP.png" />
+    <Resource Include="Assets\Mods\Auto.png" />
+    <Resource Include="Assets\Mods\Cinema.png" />
+    <Resource Include="Assets\Mods\Coop.png" />
+    <Resource Include="Assets\Mods\DT.png" />
+    <Resource Include="Assets\Mods\EZ.png" />
+    <Resource Include="Assets\Mods\FI.png" />
+    <Resource Include="Assets\Mods\FL.png" />
+    <Resource Include="Assets\Mods\HD.png" />
+    <Resource Include="Assets\Mods\HR.png" />
+    <Resource Include="Assets\Mods\HT.png" />
+    <Resource Include="Assets\Mods\Key1.png" />
+    <Resource Include="Assets\Mods\Key2.png" />
+    <Resource Include="Assets\Mods\Key3.png" />
+    <Resource Include="Assets\Mods\Key4.png" />
+    <Resource Include="Assets\Mods\Key5.png" />
+    <Resource Include="Assets\Mods\Key6.png" />
+    <Resource Include="Assets\Mods\Key7.png" />
+    <Resource Include="Assets\Mods\Key8.png" />
+    <Resource Include="Assets\Mods\Key9.png" />
+    <Resource Include="Assets\Mods\NC.png" />
+    <Resource Include="Assets\Mods\NF.png" />
+    <Resource Include="Assets\Mods\NM.png" />
+    <Resource Include="Assets\Mods\PF.png" />
+    <Resource Include="Assets\Mods\Random.png" />
+    <Resource Include="Assets\Mods\RX.png" />
+    <Resource Include="Assets\Mods\SD.png" />
+    <Resource Include="Assets\Mods\SO.png" />
+    <Resource Include="Assets\Mods\Target.png" />
+    <Resource Include="Assets\Placeholders\cover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\Exo 2\OFL.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,16 @@
+﻿<Application x:Class="osu_tourney_tool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:osu_tourney_tool"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <FontFamily x:Key="Exo2">pack://application:,,,/Fonts/Exo 2/#Exo 2</FontFamily>
+            <FontFamily x:Key="Venera100">pack://application:,,,/Fonts/Venera/#Venera 100</FontFamily>
+            <FontFamily x:Key="Venera300">pack://application:,,,/Fonts/Venera/#Venera 300</FontFamily>
+            <FontFamily x:Key="Venera500">pack://application:,,,/Fonts/Venera/#Venera 500</FontFamily>
+            <FontFamily x:Key="Venera700">pack://application:,,,/Fonts/Venera/#Venera 700</FontFamily>
+            <FontFamily x:Key="Venera900">pack://application:,,,/Fonts/Venera/#Venera 900</FontFamily>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
