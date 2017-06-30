@@ -5,6 +5,12 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Purple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Amber.xaml" />
+            </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="Exo2">pack://application:,,,/Fonts/Exo 2/#Exo 2</FontFamily>
             <FontFamily x:Key="Venera100">pack://application:,,,/Fonts/Venera/#Venera 100</FontFamily>
             <FontFamily x:Key="Venera300">pack://application:,,,/Fonts/Venera/#Venera 300</FontFamily>

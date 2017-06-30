@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:osu_tourney_tool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="300" Width="300">
     <Grid>
-        
+        <Frame x:Name="WindowContent"  Content="Frame" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="292" Source="/osu-tourney-tool;component/UI/Pages/MainPage.xaml"/>
+
     </Grid>
 </Window>
