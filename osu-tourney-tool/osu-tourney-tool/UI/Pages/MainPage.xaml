@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:osu_tourney_tool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="750"
+        Title="MainWindow" d:DesignHeight="350" d:DesignWidth="750"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -17,12 +17,12 @@
     <Grid>
         <Label Content="Welcome to the osu! tournament manager !" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="SemiBold" FontStyle="Italic"/>
         <Label Content="Here are few things you might want to start with" HorizontalAlignment="Center" Margin="30,46,31,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
-        <Label x:Name="aLabel" Content="there's no working thing here yet. go away" HorizontalAlignment="Right" Margin="0,0,10,10" FontSize="10" FontWeight="SemiBold" FontStyle="Italic" VerticalAlignment="Bottom"/>
+        <Label Content="there's no working thing here yet. go away" HorizontalAlignment="Right" Margin="0,0,10,10" FontSize="10" FontWeight="SemiBold" FontStyle="Italic" VerticalAlignment="Bottom"/>
         <Button Content="Login" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Because you need to login anyway" HorizontalAlignment="Left" Margin="90,80,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Button Content="Manage tournaments" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="175"/>
         <Label Content="You want to host a tournament? Look no further!" HorizontalAlignment="Left" Margin="190,118,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Button Content="Browse tournaments" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
+        <Button Content="Browse tournaments" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="175" />
         <Label Content="Looking for some competition? Take a look at ongoing tournaments" HorizontalAlignment="Left" Margin="190,155,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Button Content="Collection manager" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="175"/>
         <Label Content="That could help you manage that shitload of collections you have..." HorizontalAlignment="Left" Margin="190,201,0,0" VerticalAlignment="Top" FontSize="16"/>

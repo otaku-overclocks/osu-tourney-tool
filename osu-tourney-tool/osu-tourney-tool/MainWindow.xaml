@@ -5,9 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:osu_tourney_tool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
+        Title="MainWindow" Height="400" Width="600"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{StaticResource Exo2}">
     <Grid>
-        <Frame x:Name="WindowContent"  Content="Frame" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="292" Source="/osu-tourney-tool;component/UI/Pages/MainPage.xaml"/>
+        <Frame x:Name="WindowContent"  Content="Frame" Source="/osu-tourney-tool;component/UI/Pages/MainPage.xaml" Margin="0,47,0,0"/>
+        <Button Content="load edittournament" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Window>

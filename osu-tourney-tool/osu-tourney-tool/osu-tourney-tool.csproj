@@ -66,16 +66,31 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\BracketStage.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\GroupStage.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\StaffMember.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\Tournament.cs" />
     <Compile Include="UI\Controls\MultiplayerGame.xaml.cs">
       <DependentUpon>MultiplayerGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\MultiplayerScore.xaml.cs">
       <DependentUpon>MultiplayerScore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\EditTournament.xaml.cs">
+      <DependentUpon>EditTournament.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\TournamentListing.xaml.cs">
       <DependentUpon>TournamentListing.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\EditTournament.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

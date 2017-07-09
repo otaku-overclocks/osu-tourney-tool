@@ -23,5 +23,10 @@ namespace osu_tourney_tool
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WindowContent.Content = new UI.Pages.EditTournament();
+        }
     }
 }
