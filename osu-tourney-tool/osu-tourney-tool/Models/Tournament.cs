@@ -80,5 +80,7 @@ namespace osu_tourney_tool.Models
         internal List<StaffMember> Staff{get;set;}
         [JsonProperty(PropertyName = "current_stage")]
         internal int CurrentStage{get;set;}
+        [JsonProperty(PropertyName = "current_stage")]
+        internal int StreamLink { get; set; }
     }
 }
