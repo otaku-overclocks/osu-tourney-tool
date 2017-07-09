@@ -20,7 +20,7 @@ namespace osu_tourney_tool.UI.Pages
     /// <summary>
     /// Logique d'interaction pour EditTournament.xaml
     /// </summary>
-    public partial class EditTournament : Page
+    public partial class EditTournament : BasePage
     {
         public bool IsNewTournament;
         private Dictionary<int, string> _roles = new Dictionary<int, string>();

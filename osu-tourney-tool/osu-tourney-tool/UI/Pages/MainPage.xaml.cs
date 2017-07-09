@@ -18,7 +18,7 @@ namespace osu_tourney_tool.UI.Pages
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class MainPage : BasePage
     {
         public MainPage()
         {

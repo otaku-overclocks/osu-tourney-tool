@@ -1,9 +1,10 @@
-﻿<Window x:Class="osu_tourney_tool.MainWindow"
+﻿<windows:NavigationWindow x:Class="osu_tourney_tool.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:osu_tourney_tool"
+       xmlns:windows="clr-namespace:osu_tourney_tool.UI.Windows"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -15,8 +16,12 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{StaticResource Exo2}">
     <Grid>
-        <Frame x:Name="WindowContent"  Content="Frame" Source="/osu-tourney-tool;component/UI/Pages/MainPage.xaml" Margin="0,47,0,0"/>
-        <Button Content="load edittournament" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Frame x:Name="WindowContent"  Content="Frame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+        <Button Content="load edittournament" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,16,0" Click="Button_Click" Grid.Row="0"/>
 
     </Grid>
-</Window>
+</windows:NavigationWindow>

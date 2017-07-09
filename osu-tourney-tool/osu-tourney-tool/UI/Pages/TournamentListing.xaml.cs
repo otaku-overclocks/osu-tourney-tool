@@ -18,7 +18,7 @@ namespace osu_tourney_tool.UI.Pages
     /// <summary>
     /// Logique d'interaction pour TournamentListing.xaml
     /// </summary>
-    public partial class TournamentListing : Page
+    public partial class TournamentListing : BasePage
     {
         public TournamentListing()
         {

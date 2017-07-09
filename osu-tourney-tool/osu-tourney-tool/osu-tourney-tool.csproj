@@ -80,12 +80,14 @@
     <Compile Include="UI\Controls\MultiplayerScore.xaml.cs">
       <DependentUpon>MultiplayerScore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\BasePage.cs" />
     <Compile Include="UI\Pages\EditTournament.xaml.cs">
       <DependentUpon>EditTournament.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\TournamentListing.xaml.cs">
       <DependentUpon>TournamentListing.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Windows\NavigationWindow.cs" />
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,4 +1,4 @@
-﻿<Page x:Class="osu_tourney_tool.UI.Pages.TournamentListing"
+﻿<local:BasePage x:Class="osu_tourney_tool.UI.Pages.TournamentListing"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -30,4 +30,5 @@
         <Label Content="Tournament Listing" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="SemiBold" FontStyle="Italic"/>
         <Button Content="Go back home" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top"/>
     </Grid>
-</Page>
+</local:BasePage>
+
