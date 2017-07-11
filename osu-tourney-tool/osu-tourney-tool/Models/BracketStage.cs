@@ -8,17 +8,17 @@ using Newtonsoft.Json;
 namespace osu_tourney_tool.Models
 {
     [JsonObject(MemberSerialization.OptIn)]
-    internal class BracketStage
+    public class BracketStage
     {
         [JsonProperty(PropertyName = "id")]
-        internal int StageID{get;set;}
+        public int StageID{get;set;}
         [JsonProperty(PropertyName = "matches")]
-        internal List<Match> Matches{get;set;}
+        public List<Match> Matches{get;set;}
         [JsonProperty(PropertyName = "mappool_id")]
-        internal int MappoolID{get;set;}
+        public int MappoolID{get;set;}
         [JsonProperty(PropertyName = "round_until_grandfinals")]
-        internal int RoundsUntilGrandfinals{get;set;}
+        public int RoundsUntilGrandfinals{get;set;}
         [JsonProperty(PropertyName = "loser_bracket")]
-        internal bool? LoserBracket{get;set;}
+        public bool? LoserBracket{get;set;}
     }
 }

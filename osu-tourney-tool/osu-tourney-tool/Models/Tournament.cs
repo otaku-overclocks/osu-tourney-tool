@@ -8,10 +8,10 @@ using Newtonsoft.Json;
 namespace osu_tourney_tool.Models
 {
     [JsonObject(MemberSerialization.OptIn)]
-    internal class Tournament
+    public class Tournament
     {
         // enums
-        internal enum Gamemodes
+        public enum Gamemodes
         {
             Standard = 0,
             Taiko = 1,
@@ -19,7 +19,7 @@ namespace osu_tourney_tool.Models
             Mania = 3
         }
 
-        internal enum ScoringModes
+        public enum ScoringModes
         {
             ScoreV1 = 0,
             Accuracy,
@@ -27,7 +27,7 @@ namespace osu_tourney_tool.Models
             ScoreV2
         }
 
-        internal enum TeamModes
+        public enum TeamModes
         {
             HeadToHead = 0,
             TagCoop = 1,
@@ -35,7 +35,7 @@ namespace osu_tourney_tool.Models
             TagTeamVS = 3
         }
 
-        internal enum RangeTypes
+        public enum RangeTypes
         {
             Rank = 0,
             Performance
@@ -43,44 +43,44 @@ namespace osu_tourney_tool.Models
 
         // properties
         [JsonProperty(PropertyName = "id")]
-        internal uint? TournamentId { get; set; }
+        public uint? TournamentId { get; set; }
         [JsonProperty(PropertyName = "name")]
-        internal string Name{get;set;}
+        public string Name{get;set;}
         [JsonProperty(PropertyName = "short_name")]
-        internal string ShortName{get;set;}
+        public string ShortName{get;set;}
         [JsonProperty(PropertyName = "short_description")]
-        internal string ShortDescription{get;set;}
+        public string ShortDescription{get;set;}
         [JsonProperty(PropertyName = "description")]
-        internal string Description{get;set;}
+        public string Description{get;set;}
         [JsonProperty(PropertyName = "banner_url")]
-        internal string BannerURL{get;set;}
+        public string BannerURL{get;set;}
         [JsonProperty(PropertyName = "gamemode")]
-        internal Gamemodes Gamemode{get;set;}
+        public Gamemodes Gamemode{get;set;}
         [JsonProperty(PropertyName = "scoring_mode")]
-        internal ScoringModes ScoringMode{get;set;}
+        public ScoringModes ScoringMode{get;set;}
         [JsonProperty(PropertyName = "team_mode")]
-        internal TeamModes TeamMode{get;set;}
+        public TeamModes TeamMode{get;set;}
         [JsonProperty(PropertyName = "range_type")]
-        internal RangeTypes RangeType{get;set;}
+        public RangeTypes RangeType{get;set;}
         [JsonProperty(PropertyName = "min_skill")]
-        internal int MinSkill{get;set;}
+        public int MinSkill{get;set;}
         [JsonProperty(PropertyName = "max_skill")]
-        internal int MaxSkill{get;set;}
+        public int MaxSkill{get;set;}
         [JsonProperty(PropertyName = "teams")]
-        internal List<Team> Teams{get;set;}
+        public List<Team> Teams{get;set;}
         [JsonProperty(PropertyName = "players")]
-        internal List<Player> Players{get;set;}
+        public List<Player> Players{get;set;}
         [JsonProperty(PropertyName = "max_teams")]
-        internal int MaxTeams{get;set;}
+        public int MaxTeams{get;set;}
         [JsonProperty(PropertyName = "group_stage")]
-        internal GroupStage GroupStage{get;set;}
+        public GroupStage GroupStage{get;set;}
         [JsonProperty(PropertyName = "brackets")]
-        internal List<BracketStage> Brackets{get;set;}
+        public List<BracketStage> Brackets{get;set;}
         [JsonProperty(PropertyName = "staff")]
-        internal List<StaffMember> Staff{get;set;}
+        public List<StaffMember> Staff{get;set;}
         [JsonProperty(PropertyName = "current_stage")]
-        internal int CurrentStage{get;set;}
+        public int CurrentStage{get;set;}
         [JsonProperty(PropertyName = "current_stage")]
-        internal int StreamLink { get; set; }
+        public int StreamLink { get; set; }
     }
 }

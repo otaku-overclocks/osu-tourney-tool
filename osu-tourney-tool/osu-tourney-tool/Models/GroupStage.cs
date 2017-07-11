@@ -8,13 +8,13 @@ using Newtonsoft.Json;
 namespace osu_tourney_tool.Models
 {
     [JsonObject(MemberSerialization.OptIn)]
-    internal class GroupStage
+    public class GroupStage
     {
         [JsonProperty(PropertyName = "id")]
-        internal int StageID{get;set;}
+        public int StageID{get;set;}
         [JsonProperty(PropertyName = "groups")]
-        internal List<Group> Groups{get;set;}
+        public List<Group> Groups{get;set;}
         [JsonProperty(PropertyName = "mappool_id")]
-        internal int MappoolID{get;set;}
+        public int MappoolID{get;set;}
     }
 }

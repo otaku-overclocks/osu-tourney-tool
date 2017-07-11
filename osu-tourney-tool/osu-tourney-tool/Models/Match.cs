@@ -8,19 +8,19 @@ using Newtonsoft.Json;
 namespace osu_tourney_tool.Models
 {
     [JsonObject(MemberSerialization.OptIn)]
-    internal class Match
+    public class Match
     {
         [JsonProperty(PropertyName = "id")]
-        internal int MatchID{get;set;}
+        public int MatchID{get;set;}
         [JsonProperty(PropertyName = "schedule")]
-        internal DateTime? Schedule{get;set;}
+        public DateTime? Schedule{get;set;}
         [JsonProperty(PropertyName = "red_team_id")]
-        internal int? RedTeamID{get;set;}
+        public int? RedTeamID{get;set;}
         [JsonProperty(PropertyName = "red_team_score")]
-        internal int? RedTeamScore{get;set;}
+        public int? RedTeamScore{get;set;}
         [JsonProperty(PropertyName = "blue_team_id")]
-        internal int? BlueTeamID{get;set;}
+        public int? BlueTeamID{get;set;}
         [JsonProperty(PropertyName = "blue_team_score")]
-        internal int? BlueTeamScore{get;set;}
+        public int? BlueTeamScore{get;set;}
     }
 }
