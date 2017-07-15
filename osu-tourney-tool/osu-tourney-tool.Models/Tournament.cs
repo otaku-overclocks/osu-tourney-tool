@@ -81,6 +81,6 @@ namespace osu_tourney_tool.Models
         [JsonProperty(PropertyName = "current_stage")]
         public int CurrentStage{get;set;}
         [JsonProperty(PropertyName = "stream_link")]
-        public int StreamLink {get;set;}
+        public string StreamLink {get;set;}
     }
 }
