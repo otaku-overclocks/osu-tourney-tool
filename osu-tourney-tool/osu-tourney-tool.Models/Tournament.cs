@@ -80,7 +80,7 @@ namespace osu_tourney_tool.Models
         public List<StaffMember> Staff{get;set;}
         [JsonProperty(PropertyName = "current_stage")]
         public int CurrentStage{get;set;}
-        [JsonProperty(PropertyName = "current_stage")]
+        [JsonProperty(PropertyName = "stream_link")]
         public int StreamLink { get; set; }
     }
 }
