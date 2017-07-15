@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:osu_tourney_tool"
-       xmlns:windows="clr-namespace:osu_tourney_tool.UI.Windows"
+        xmlns:windows="clr-namespace:osu_tourney_tool.UI.Windows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600"
+        Title="MainWindow" Height="500" Width="700"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -21,7 +21,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Frame x:Name="WindowContent"  Content="Frame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
-        <Button Content="load edittournament" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,16,0" Click="Button_Click" Grid.Row="0"/>
+        <Button Content="load edittournament" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0" Click="Button_Click" Grid.Row="0"/>
+        <Button Content="load TournamentSummary with no data" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="184,0,0,0" Click="Button2_Click" Grid.Row="0"/>
+        <Button Content="load about" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="472,8,-63,8" Click="Button3_Click" Grid.Row="0"/>
 
     </Grid>
 </windows:NavigationWindow>

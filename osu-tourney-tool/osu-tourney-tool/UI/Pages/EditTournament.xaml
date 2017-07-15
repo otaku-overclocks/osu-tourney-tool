@@ -19,14 +19,6 @@
 
 
     <Grid>
-        <Border BorderBrush="Black" Background="{DynamicResource MaterialDesignPaper}" BorderThickness="0" Height="44"
-                VerticalAlignment="Top" Margin="-10,0" Padding="10,0,0,0">
-            <Border.Effect>
-                <DropShadowEffect Direction="270" ShadowDepth="2" Opacity="0.5" />
-            </Border.Effect>
-            <Label Content="Create/Edit Tournament" HorizontalAlignment="Left" VerticalAlignment="Top"
-                   FontWeight="Bold" FontStyle="Italic" FontSize="20" Margin="5,5,0,5" />
-        </Border>
         <ScrollViewer Margin="0,44,0,0">
             <StackPanel>
                 <Label Content="Tournament info" Margin="10,0" FontSize="14" FontWeight="SemiBold" FontStyle="Italic" />
@@ -185,5 +177,13 @@
                         Click="CreateTourneyButton_Click" />
             </StackPanel>
         </ScrollViewer>
+        <Border BorderBrush="Black" Background="{DynamicResource MaterialDesignPaper}" BorderThickness="0" Height="44"
+                VerticalAlignment="Top" Margin="-10,0" Padding="10,0,0,0">
+            <Border.Effect>
+                <DropShadowEffect Direction="270" ShadowDepth="2" Opacity="0.5" />
+            </Border.Effect>
+            <Label Content="Create/Edit Tournament" HorizontalAlignment="Left" VerticalAlignment="Top"
+                   FontWeight="Bold" FontStyle="Italic" FontSize="20" Margin="5,5,0,5" />
+        </Border>
     </Grid>
 </local:BasePage>

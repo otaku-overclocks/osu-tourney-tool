@@ -36,5 +36,15 @@ namespace osu_tourney_tool
         {
             OpenPage(new EditTournament());
         }
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            OpenPage(new TournamentSummary());
+        }
+
+        private void Button3_Click(object sender, RoutedEventArgs e)
+        {
+            OpenPage(new AboutScreen());
+        }
     }
 }

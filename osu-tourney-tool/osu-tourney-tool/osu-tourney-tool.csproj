@@ -66,19 +66,14 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\BracketStage.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\GroupStage.cs" />
-    <Compile Include="Models\Match.cs" />
-    <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\StaffMember.cs" />
-    <Compile Include="Models\Team.cs" />
-    <Compile Include="Models\Tournament.cs" />
     <Compile Include="UI\Controls\MultiplayerGame.xaml.cs">
       <DependentUpon>MultiplayerGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\MultiplayerScore.xaml.cs">
       <DependentUpon>MultiplayerScore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\AboutScreen.xaml.cs">
+      <DependentUpon>AboutScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\BasePage.cs" />
     <Compile Include="UI\Pages\EditTournament.xaml.cs">
@@ -87,8 +82,15 @@
     <Compile Include="UI\Pages\TournamentListing.xaml.cs">
       <DependentUpon>TournamentListing.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\TournamentSummary.xaml.cs">
+      <DependentUpon>TournamentSummary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Windows\NavigationWindow.cs" />
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\AboutScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,6 +119,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Pages\TournamentListing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\TournamentSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -372,6 +378,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Fonts\Exo 2\OFL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Placeholders\tournament%402x.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Misc images\Icon About.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\osu-tourney-tool.Models\osu-tourney-tool.Models.csproj">
+      <Project>{f631adf5-1836-4a92-a8e2-20408fb000c6}</Project>
+      <Name>osu-tourney-tool.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

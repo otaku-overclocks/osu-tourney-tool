@@ -1,0 +1,82 @@
+﻿<pages:BasePage x:Class="osu_tourney_tool.UI.Pages.TournamentSummary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:osu_tourney_tool.UI.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="TournamentSummary"
+      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:pages="clr-namespace:osu_tourney_tool.UI.Pages"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{StaticResource Exo2}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Background="#FFFAFAFA" Margin="-5,0">
+            <Border.Effect>
+                <DropShadowEffect Direction="270" ShadowDepth="2" Opacity="0.6"/>
+            </Border.Effect>
+            <Grid ClipToBounds="True" Margin="5,0">
+                <Image HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Source="/osu-tourney-tool;component/Assets/Placeholders/tournament@2x.jpg" Stretch="UniformToFill" />
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#00000000" Offset="0"/>
+                            <GradientStop Color="#7F000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Label Content="Scallop Tourney Kappa 2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0" Margin="5,0,0,5" Foreground="White" FontStyle="Italic" FontWeight="SemiBold" FontSize="25">
+                    <Label.Effect>
+                        <DropShadowEffect Direction="270" BlurRadius="3" ShadowDepth="2" Opacity="0.6"/>
+                    </Label.Effect>
+                </Label>
+                <Label Content="2v2, #80k to #150k" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="0" Margin="0,0,5,5" Foreground="White" FontStyle="Italic" FontWeight="Medium" FontSize="25">
+                    <Label.Effect>
+                        <DropShadowEffect Direction="270" BlurRadius="3" ShadowDepth="2" Opacity="0.6"/>
+                    </Label.Effect>
+                </Label>
+                <Label Content="Registrations (4 hours left)" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="0" Margin="0,0,5,30" Foreground="White" FontStyle="Italic" FontWeight="SemiBold" FontSize="20">
+                    <Label.Effect>
+                        <DropShadowEffect Direction="270" BlurRadius="3" ShadowDepth="2" Opacity="0.6"/>
+                    </Label.Effect>
+                </Label>
+
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="125"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="osu! standard, score v2" HorizontalAlignment="Left" Padding="0" Margin="10,18,0,0" VerticalAlignment="Top" FontWeight="SemiBold" FontStyle="Italic" FontSize="14" Height="17" Width="152"/>
+            <Button Content="Register" Margin="0,10,10,0" VerticalAlignment="Top" Grid.Column="1" Background="#FF2196F3" BorderBrush="#FF2196F3" FontSize="14"/>
+            <Label Content="24/32 teams registered" HorizontalAlignment="Right" Padding="0" Margin="0,18,10,0" VerticalAlignment="Top" FontWeight="Medium" FontStyle="Italic" FontSize="14" Height="17" Width="150"/>
+            <Label Content="Description:" HorizontalAlignment="Left" Padding="0" Margin="10,45,0,0" VerticalAlignment="Top" FontWeight="SemiBold" FontStyle="Italic" FontSize="14" Height="17" Width="80"/>
+            <ScrollViewer Height="80" Margin="10,67,10,0" VerticalAlignment="Top">
+                <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" VerticalAlignment="Top" Text="Scallop Tourney Kappa 2 is the second installment of the tournament series Scallop Tourney Kappa, which is pure common sense otherwise it wouldn't be called STK2, right? Anyway this tourney plans to let up to 32 teams battle for the grand prize which is nothing. Get dunked on bitches."/>
+            </ScrollViewer>
+            <Label Content="Rules" HorizontalAlignment="Left" Padding="0" Margin="10,152,0,0" VerticalAlignment="Top" FontWeight="SemiBold" FontStyle="Italic" FontSize="14" Height="17" Width="37"/>
+            <ScrollViewer Margin="10,174,10,10">
+                <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" VerticalAlignment="Top" Text="- pls enjoy game&#x0d;&#x0a;- kys&#x0d;&#x0a;- have fun or ban"/>
+            </ScrollViewer>
+            <Button Content="Players" Margin="0,47,10,0" VerticalAlignment="Top" Grid.Column="1" Background="#FFF26522" BorderBrush="#FFF26522" FontSize="14"/>
+            <Button Content="Standings" Margin="0,84,10,0" VerticalAlignment="Top" Grid.Column="1" Background="#FF9E0B0F" BorderBrush="#FF9E0B0F" FontSize="14"/>
+            <Button Content="Brackets" Margin="0,121,10,0" VerticalAlignment="Top" Grid.Column="1" Background="#FF00A651" BorderBrush="#FF00A651" FontSize="14"/>
+            <Button Content="Mappools" Margin="0,158,10,0" VerticalAlignment="Top" Grid.Column="1" Background="#FF86319F" BorderBrush="#FF86319F" FontSize="14"/>
+            <Button Content="Staff" Margin="0,195,10,0" VerticalAlignment="Top" Grid.Column="1" Background="#FFF06EAA" BorderBrush="#FFF06EAA" FontSize="14"/>
+            <Button Content="Edit" Margin="0,242,10,0" VerticalAlignment="Top" Grid.Column="1" Background="#FF0054A6" BorderBrush="#FF0054A6" FontSize="14"/>
+        </Grid>
+    </Grid>
+</pages:BasePage>
