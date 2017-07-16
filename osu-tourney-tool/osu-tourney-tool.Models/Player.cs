@@ -13,7 +13,7 @@ namespace osu_tourney_tool.Models
         [JsonProperty(PropertyName = "username")]
         public string Username{get;set;}
         [JsonProperty(PropertyName = "user_id")]
-        public int UserID{get;set;}
+        public int UserId{get;set;}
         [JsonProperty(PropertyName = "rank")]
         public int Rank{get;set;}
         [JsonProperty(PropertyName = "performance")]

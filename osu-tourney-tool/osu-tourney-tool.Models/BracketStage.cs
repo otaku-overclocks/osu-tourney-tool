@@ -11,11 +11,11 @@ namespace osu_tourney_tool.Models
     public class BracketStage
     {
         [JsonProperty(PropertyName = "id")]
-        public int StageID{get;set;}
+        public int StageId{get;set;}
         [JsonProperty(PropertyName = "matches")]
         public List<Match> Matches{get;set;}
         [JsonProperty(PropertyName = "mappool_id")]
-        public int MappoolID{get;set;}
+        public int MappoolId{get;set;}
         [JsonProperty(PropertyName = "round_until_grandfinals")]
         public int RoundsUntilGrandfinals{get;set;}
         [JsonProperty(PropertyName = "loser_bracket")]

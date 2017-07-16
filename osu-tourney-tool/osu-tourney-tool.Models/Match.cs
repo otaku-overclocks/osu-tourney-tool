@@ -11,15 +11,15 @@ namespace osu_tourney_tool.Models
     public class Match
     {
         [JsonProperty(PropertyName = "id")]
-        public int MatchID{get;set;}
+        public int MatchId{get;set;}
         [JsonProperty(PropertyName = "schedule")]
         public DateTime? Schedule{get;set;}
         [JsonProperty(PropertyName = "red_team_id")]
-        public int? RedTeamID{get;set;}
+        public int? RedTeamId{get;set;}
         [JsonProperty(PropertyName = "red_team_score")]
         public int? RedTeamScore{get;set;}
         [JsonProperty(PropertyName = "blue_team_id")]
-        public int? BlueTeamID{get;set;}
+        public int? BlueTeamId{get;set;}
         [JsonProperty(PropertyName = "blue_team_score")]
         public int? BlueTeamScore{get;set;}
     }

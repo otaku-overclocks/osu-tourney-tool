@@ -23,44 +23,44 @@ namespace osu_tourney_tool.UI.Controls
     /// </summary>
     public partial class MultiplayerGame : UserControl
     {
-        NumberFormatInfo NFIperformance = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+        private readonly NumberFormatInfo _nfIperformance = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
         public MultiplayerGame()
         {
             InitializeComponent();
-            NFIperformance.NumberGroupSeparator = ",";
-            NFIperformance.NumberDecimalSeparator = ".";
-            NFIperformance.NumberDecimalDigits = 0;
+            _nfIperformance.NumberGroupSeparator = ",";
+            _nfIperformance.NumberDecimalSeparator = ".";
+            _nfIperformance.NumberDecimalDigits = 0;
         }
 
         [Flags]
         public enum Modifiers
         {
             None = 0,
-            NF = 1,
-            EZ = 2,
+            NoFail = 1,
+            Easy = 2,
             NoVideo = 4,
-            HD = 8,
-            HR = 16,
-            SD = 32,
-            DT = 64,
-            RX = 128,
-            HT = 256,
-            NC = 512, // Only set along with DoubleTime. i.e: NC only gives 576
-            FL = 1024,
+            Hidden = 8,
+            HardRock = 16,
+            SuddenDeath = 32,
+            DoubleTime = 64,
+            Relax = 128,
+            HalfTime = 256,
+            Nightcore = 512, // Only set along with DoubleTime. i.e: Nightcore only gives 576
+            Flashlight = 1024,
             Auto = 2048,
-            SO = 4096,
-            AP = 8192,  // Autopilot?
-            PF = 16384, // Only set along with SuddenDeath. i.e: PF only gives 16416  
+            SpunOut = 4096,
+            AutoPilot = 8192,  // Autopilot?
+            Perfect = 16384, // Only set along with SuddenDeath. i.e: Perfect only gives 16416  
             Key4 = 32768,
             Key5 = 65536,
             Key6 = 131072,
             Key7 = 262144,
             Key8 = 524288,
-            keyMod = Key4 | Key5 | Key6 | Key7 | Key8,
-            FI = 1048576,
+            KeyMod = Key4 | Key5 | Key6 | Key7 | Key8,
+            FadeIn = 1048576,
             Random = 2097152,
             LastMod = 4194304,
-            FreeModAllowed = NF | EZ | HD | HR | SD | FL | FI | RX | AP | SO | keyMod,
+            FreeModAllowed = NoFail | Easy | Hidden | HardRock | SuddenDeath | Flashlight | FadeIn | Relax | AutoPilot | SpunOut | KeyMod,
             Key9 = 16777216,
             Key10 = 33554432,
             Key1 = 67108864,
@@ -71,8 +71,8 @@ namespace osu_tourney_tool.UI.Controls
         {
             HeadToHead = 0,
             TagCoop = 1,
-            TeamVS = 2,
-            TagTeamVS = 3
+            TeamVs = 2,
+            TagTeamVs = 3
         }
 
         // Util methods
@@ -81,40 +81,38 @@ namespace osu_tourney_tool.UI.Controls
         {
             ModIcons.Children.Clear();
             var marginLeft = 0.0;
-            if (mods != Modifiers.None)
+            if (mods == Modifiers.None) return;
+            var regex = new Regex("([A-z0-9]{2,})");
+            Debug.WriteLine(mods.ToString());
+            var matches = regex.Matches(mods.ToString());
+            var modsList = new List<string>();
+            foreach (Match match in matches)
             {
-                Regex regex = new Regex("([A-z0-9]{2,})");
-                Debug.WriteLine(mods.ToString());
-                MatchCollection matches = regex.Matches(mods.ToString());
-                List<string> modsList = new List<string>();
-                foreach (Match match in matches)
+                modsList.Add(match.Value);
+            }
+            if (modsList.Contains("Perfect"))
+            {
+                modsList.Remove("SuddenDeath");
+            }
+            if (modsList.Contains("Nightcore"))
+            {
+                modsList.Remove("DoubleTime");
+            }
+            foreach (var modImage in modsList)
+            {
+                var logo = new BitmapImage();
+                logo.BeginInit();
+                logo.UriSource = new Uri($"pack://application:,,,/osu-tourney-tool;component/Assets/Mods/{modImage}.png");
+                logo.EndInit();
+                var modPic = new Image
                 {
-                    modsList.Add(match.Value);
-                }
-                if (modsList.Contains("PF"))
-                {
-                    modsList.Remove("SD");
-                }
-                if (modsList.Contains("NC"))
-                {
-                    modsList.Remove("DT");
-                }
-                foreach (string modImage in modsList)
-                {
-                    BitmapImage logo = new BitmapImage();
-                    logo.BeginInit();
-                    logo.UriSource = new Uri($"pack://application:,,,/osu-tourney-tool;component/Assets/Mods/{modImage}.png");
-                    logo.EndInit();
-                    Image modPic = new Image()
-                    {
-                        Height = 30.0,
-                        Margin = new Thickness(marginLeft,0,0,0),
-                        Source = logo
-                    };
-                    RenderOptions.SetBitmapScalingMode(modPic, BitmapScalingMode.HighQuality);
-                    ModIcons.Children.Add(modPic);
-                    marginLeft = -12.0;
-                }
+                    Height = 30.0,
+                    Margin = new Thickness(marginLeft,0,0,0),
+                    Source = logo
+                };
+                RenderOptions.SetBitmapScalingMode(modPic, BitmapScalingMode.HighQuality);
+                ModIcons.Children.Add(modPic);
+                marginLeft = -12.0;
             }
         }
 
@@ -122,7 +120,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public Modifiers Mods
         {
-            get { return (Modifiers)GetValue(ModsProperty); }
+            get => (Modifiers)GetValue(ModsProperty);
             set
             {
                 SetValue(ModsProperty, value);
@@ -138,72 +136,69 @@ namespace osu_tourney_tool.UI.Controls
 
         public List<MultiplayerScore> Scores
         {
-            get { return (List<MultiplayerScore>)GetValue(ScoresProperty); }
+            get => (List<MultiplayerScore>)GetValue(ScoresProperty);
             set
             {
                 SetValue(ScoresProperty,value);
                 RedTeamScore = 0;
                 BlueTeamScore = 0;
                 ScoresPanel.Children.Clear();
-                var _scores = (List<MultiplayerScore>)GetValue(ScoresProperty);
+                var scores = (List<MultiplayerScore>)GetValue(ScoresProperty);
                 
-                if (TeamMode == TeamModes.TeamVS || TeamMode == TeamModes.TagTeamVS)
+                if (TeamMode == TeamModes.TeamVs || TeamMode == TeamModes.TagTeamVs)
                 {
-                    _scores = _scores.OrderBy(x => x.Team).ToList();
+                    scores = scores.OrderBy(x => x.Team).ToList();
                 } else {
-                    _scores = _scores.OrderByDescending(x => x.Score).ToList();
+                    scores = scores.OrderByDescending(x => x.Score).ToList();
                 }
-                SetValue(ScoresProperty, _scores);
-                foreach (MultiplayerScore score in _scores)
+                SetValue(ScoresProperty, scores);
+                foreach (var score in scores)
                 {
-                    if (TeamMode == TeamModes.TeamVS || TeamMode == TeamModes.TagTeamVS)
+                    if (TeamMode == TeamModes.TeamVs || TeamMode == TeamModes.TagTeamVs)
                     {
-                        if (score.Team == MultiplayerScore.Teams.Red && score.Pass == true)
+                        if (score.Team == MultiplayerScore.Teams.Red && score.Pass)
                         {
                             RedTeamScore += score.Score;
                         }
-                        else if (score.Team == MultiplayerScore.Teams.Blue && score.Pass == true)
+                        else if (score.Team == MultiplayerScore.Teams.Blue && score.Pass)
                         {
                             BlueTeamScore += score.Score;
                         }
                     }
                     ScoresPanel.Children.Add(score);
                 }
-                if (TeamMode == TeamModes.TeamVS || TeamMode == TeamModes.TagTeamVS)
+                if (TeamMode != TeamModes.TeamVs && TeamMode != TeamModes.TagTeamVs) return;
+                if (RedTeamScore > BlueTeamScore)
                 {
-                    
-                    if (RedTeamScore > BlueTeamScore)
-                    {
-                        //RedTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
-                        RedTeamNameLabel.FontWeight = FontWeights.Bold;
-                        RedTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera900");
+                    //RedTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
+                    RedTeamNameLabel.FontWeight = FontWeights.Bold;
+                    RedTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera900");
 
-                        //BlueTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
-                        BlueTeamNameLabel.FontWeight = FontWeights.Regular;
-                        BlueTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
+                    //BlueTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
+                    BlueTeamNameLabel.FontWeight = FontWeights.Regular;
+                    BlueTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
 
-                    }
-                    else if (RedTeamScore < BlueTeamScore)
-                    {
-                        //RedTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
-                        RedTeamNameLabel.FontWeight = FontWeights.Regular;
-                        RedTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
+                }
+                else if (RedTeamScore < BlueTeamScore)
+                {
+                    //RedTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
+                    RedTeamNameLabel.FontWeight = FontWeights.Regular;
+                    RedTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
 
-                        //BlueTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
-                        BlueTeamNameLabel.FontWeight = FontWeights.Bold;
-                        BlueTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera900");
-                    }
-                    else
-                    {
-                        //RedTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
-                        RedTeamNameLabel.FontWeight = FontWeights.Regular;
-                        RedTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
+                    //BlueTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
+                    BlueTeamNameLabel.FontWeight = FontWeights.Bold;
+                    BlueTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera900");
+                }
+                else
+                {
+                    //RedTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
+                    RedTeamNameLabel.FontWeight = FontWeights.Regular;
+                    RedTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
 
-                        //BlueTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
-                        BlueTeamNameLabel.FontWeight = FontWeights.Regular;
-                        BlueTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
+                    //BlueTeamNameLabel.FontFamily = (FontFamily)TryFindResource("Exo2");
+                    BlueTeamNameLabel.FontWeight = FontWeights.Regular;
+                    BlueTeamScoreLabel.FontFamily = (FontFamily)TryFindResource("Venera500");
 
-                    }
                 }
             }
         }
@@ -216,7 +211,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public string SongName
         {
-            get { return (string)GetValue(SongNameProperty); }
+            get => (string)GetValue(SongNameProperty);
             set { SetValue(SongNameProperty, value);
                 NameAndDiffLabel.Content = $"{value} [{(string)GetValue(DifficultyProperty)}]";
             }
@@ -230,7 +225,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public string Difficulty
         {
-            get { return (string)GetValue(DifficultyProperty); }
+            get => (string)GetValue(DifficultyProperty);
             set { SetValue(DifficultyProperty, value);
                 NameAndDiffLabel.Content = $"{(string)GetValue(SongNameProperty)} [{value}]";
             }
@@ -244,7 +239,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public string SongArtist
         {
-            get { return (string)GetValue(SongArtistProperty); }
+            get => (string)GetValue(SongArtistProperty);
             set { SetValue(SongArtistProperty, value);
                 ArtistLabel.Content = value;
             }
@@ -258,9 +253,9 @@ namespace osu_tourney_tool.UI.Controls
 
         public string CoverImage
         {
-            get { return (string)GetValue(CoverImageProperty); }
+            get => (string)GetValue(CoverImageProperty);
             set { SetValue(CoverImageProperty, value);
-                BitmapImage bi3 = new BitmapImage();
+                var bi3 = new BitmapImage();
                 bi3.BeginInit();
                 bi3.UriSource = new Uri(value, UriKind.RelativeOrAbsolute);
                 bi3.CacheOption = BitmapCacheOption.OnLoad;
@@ -279,9 +274,9 @@ namespace osu_tourney_tool.UI.Controls
 
         public TeamModes TeamMode
         {
-            get { return (TeamModes)GetValue(TeamModeProperty); }
+            get => (TeamModes)GetValue(TeamModeProperty);
             set { SetValue(TeamModeProperty, value);
-                if (value == TeamModes.TagTeamVS || value == TeamModes.TeamVS)
+                if (value == TeamModes.TagTeamVs || value == TeamModes.TeamVs)
                 {
                     RedTeamScoreLabel.Visibility = Visibility.Visible;
                     RedTeamNameLabel.Visibility = Visibility.Visible;
@@ -306,9 +301,9 @@ namespace osu_tourney_tool.UI.Controls
 
         public long BlueTeamScore
         {
-            get { return (long)GetValue(BlueTeamScoreProperty); }
+            get => (long)GetValue(BlueTeamScoreProperty);
             set { SetValue(BlueTeamScoreProperty, value);
-                BlueTeamScoreLabel.Content = value.ToString("n", NFIperformance);
+                BlueTeamScoreLabel.Content = value.ToString("n", _nfIperformance);
             }
         }
 
@@ -320,9 +315,9 @@ namespace osu_tourney_tool.UI.Controls
 
         public long RedTeamScore
         {
-            get { return (long)GetValue(RedTeamScoreProperty); }
+            get => (long)GetValue(RedTeamScoreProperty);
             set { SetValue(RedTeamScoreProperty, value);
-                RedTeamScoreLabel.Content = value.ToString("n", NFIperformance);
+                RedTeamScoreLabel.Content = value.ToString("n", _nfIperformance);
             }
         }
 
@@ -331,14 +326,13 @@ namespace osu_tourney_tool.UI.Controls
             DependencyProperty.Register("RedTeamScore", typeof(long), typeof(MultiplayerGame), new PropertyMetadata((long)0));
 
 
-        // TODO: 
-        // Custom team labels
+        
 
 
 
         public string RedTeamName
         {
-            get { return (string)GetValue(RedTeamNameProperty); }
+            get => (string)GetValue(RedTeamNameProperty);
             set { SetValue(RedTeamNameProperty, value);
                 RedTeamNameLabel.Content = value;
             }
@@ -352,7 +346,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public string BlueTeamName
         {
-            get { return (string)GetValue(BlueTeamNameProperty); }
+            get => (string)GetValue(BlueTeamNameProperty);
             set { SetValue(BlueTeamNameProperty, value);
                 BlueTeamNameLabel.Content = value;
             }

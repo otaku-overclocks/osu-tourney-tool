@@ -31,8 +31,8 @@ namespace osu_tourney_tool.Models
         {
             HeadToHead = 0,
             TagCoop = 1,
-            TeamVS = 2,
-            TagTeamVS = 3
+            TeamVs = 2,
+            TagTeamVs = 3
         }
 
         public enum RangeTypes
@@ -53,7 +53,7 @@ namespace osu_tourney_tool.Models
         [JsonProperty(PropertyName = "description")]
         public string Description{get;set;}
         [JsonProperty(PropertyName = "banner_url")]
-        public string BannerURL{get;set;}
+        public string BannerUrl{get;set;}
         [JsonProperty(PropertyName = "gamemode")]
         public Gamemodes Gamemode{get;set;}
         [JsonProperty(PropertyName = "scoring_mode")]

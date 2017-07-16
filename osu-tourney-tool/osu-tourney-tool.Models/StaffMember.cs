@@ -13,18 +13,18 @@ namespace osu_tourney_tool.Models
         [JsonProperty(PropertyName = "username")]
         public string Username{get;set;}
         [JsonProperty(PropertyName = "user_id")]
-        public int UserID{get;set;}
+        public int UserId{get;set;}
         [JsonProperty(PropertyName = "role")]
-        public int RoleID{get;set;}
+        public int RoleId{get;set;}
 
         // non json-ed properties
         // also temporary.
         public string Role{get;set;}
 
-        public void SetRole(int role_id, string role_name)
+        public void SetRole(int roleId, string roleName)
         {
-            RoleID = role_id;
-            Role = role_name;
+            RoleId = roleId;
+            Role = roleName;
         }
     }
 }

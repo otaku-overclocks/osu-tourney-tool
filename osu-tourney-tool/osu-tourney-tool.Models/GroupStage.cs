@@ -11,10 +11,10 @@ namespace osu_tourney_tool.Models
     public class GroupStage
     {
         [JsonProperty(PropertyName = "id")]
-        public int StageID{get;set;}
+        public int StageId{get;set;}
         [JsonProperty(PropertyName = "groups")]
         public List<Group> Groups{get;set;}
         [JsonProperty(PropertyName = "mappool_id")]
-        public int MappoolID{get;set;}
+        public int MappoolId{get;set;}
     }
 }

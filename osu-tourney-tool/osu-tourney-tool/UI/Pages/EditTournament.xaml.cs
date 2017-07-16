@@ -23,35 +23,34 @@ namespace osu_tourney_tool.UI.Pages
     public partial class EditTournament : BasePage
     {
         public bool IsNewTournament;
-        private Dictionary<int, string> _roles = new Dictionary<int, string>();
+        private readonly Dictionary<int, string> _roles = new Dictionary<int, string>();
 
 
         public EditTournament()
         {
             InitializeComponent();
-            int i = 0;
+            var i = 0;
             foreach (ComboBoxItem item in StaffRoleDropdown.Items)
             {
                 _roles.Add(i, Convert.ToString(item.Content));
                 i++;
             }
-            Console.WriteLine("Handy breakpoint in here");
         }
 
-        private int _PlayerID = 1;
-        private int _TeamID = 1;
-        private List<Player> _players = new List<Player>();
-        private List<Team> _teams = new List<Team>();
+        private int _playerId = 1;
+        private int _teamId = 1;
+        private readonly List<Player> _players = new List<Player>();
+        private readonly List<Team> _teams = new List<Team>();
 
         private void CreateTourneyButton_Click(object sender, RoutedEventArgs e)
         {
-            Tournament tourney = new Tournament
+            var tourney = new Tournament
             {
                 Name = NameBox.Text,
                 ShortName = ShortNameBox.Text,
                 ShortDescription = ShortDescBox.Text,
                 Description = LongDescBox.Text,
-                BannerURL = BannerBox.Text,
+                BannerUrl = BannerBox.Text,
                 Gamemode = (Tournament.Gamemodes) GamemodeDropdown.SelectedIndex,
                 ScoringMode = (Tournament.ScoringModes) ScoringDropdown.SelectedIndex,
                 TeamMode = (Tournament.TeamModes) TeamModeDropdown.SelectedIndex,
@@ -69,7 +68,7 @@ namespace osu_tourney_tool.UI.Pages
             {
                 tourney.RangeType = Tournament.RangeTypes.Performance;
             }
-            List<StaffMember> staff = new List<StaffMember>();
+            var staff = new List<StaffMember>();
             foreach (StaffMember member in StaffListView.Items)
             {
                 staff.Add(member);
@@ -83,7 +82,7 @@ namespace osu_tourney_tool.UI.Pages
 
         private void AddStaffButton_Click(object sender, RoutedEventArgs e)
         {
-            StaffMember member = new StaffMember {Username = StaffUsernameBox.Text};
+            var member = new StaffMember {Username = StaffUsernameBox.Text};
             member.SetRole(StaffRoleDropdown.SelectedIndex, _roles[StaffRoleDropdown.SelectedIndex]);
             StaffListView.Items.Add(member);
         }
@@ -92,44 +91,42 @@ namespace osu_tourney_tool.UI.Pages
         {
             if (VsModeDropdown.SelectedIndex == 0)
             {
-                _players.Add(new Player {Username = UserNamesBox.Text, UserID = _PlayerID});
-                _PlayerID++;
+                _players.Add(new Player {Username = UserNamesBox.Text, UserId = _playerId});
+                _playerId++;
             }
             else
             {
-                Team team = new Team();
-                List<Player> players = new List<Player>();
-                string[] usernames = UserNamesBox.Text.Split('\\');
-                foreach (string name in usernames)
+                var team = new Team();
+                var players = new List<Player>();
+                var usernames = UserNamesBox.Text.Split('\\');
+                foreach (var name in usernames)
                 {
-                    players.Add(new Player {Username = name, UserID = _PlayerID});
-                    _PlayerID++;
+                    players.Add(new Player {Username = name, UserId = _playerId});
+                    _playerId++;
                 }
-                foreach (Player player in players)
+                foreach (var player in players)
                 {
                     _players.Add(player);
-                    team.PlayerIDs.Add(player.UserID);
+                    team.PlayerIDs.Add(player.UserId);
                 }
                 team.Name = TeamNameBox.Text;
                 _teams.Add(team);
-                _TeamID++;
+                _teamId++;
             }
         }
 
         private void TeamSizeChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (IsInitialized is true)
+            if (!(IsInitialized is true)) return;
+            if (VsModeDropdown.SelectedIndex == 0)
             {
-                if (VsModeDropdown.SelectedIndex == 0)
-                {
-                    TeamNameLabel.IsEnabled = false;
-                    TeamNameBox.IsEnabled = false;
-                }
-                else
-                {
-                    TeamNameLabel.IsEnabled = true;
-                    TeamNameBox.IsEnabled = true;
-                }
+                TeamNameLabel.IsEnabled = false;
+                TeamNameBox.IsEnabled = false;
+            }
+            else
+            {
+                TeamNameLabel.IsEnabled = true;
+                TeamNameBox.IsEnabled = true;
             }
         }
     }

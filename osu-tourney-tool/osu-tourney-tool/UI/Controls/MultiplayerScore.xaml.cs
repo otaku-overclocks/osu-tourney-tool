@@ -23,14 +23,14 @@ namespace osu_tourney_tool.UI.Controls
     /// </summary>
     public partial class MultiplayerScore : UserControl
     {
-        NumberFormatInfo NFIperformance = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+        private readonly NumberFormatInfo _nfIperformance = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
         public MultiplayerScore()
         {
             InitializeComponent();
             // NumberFormatInfo for PPs
-            NFIperformance.NumberGroupSeparator = ",";
-            NFIperformance.NumberDecimalSeparator = ".";
-            NFIperformance.NumberDecimalDigits = 0;
+            _nfIperformance.NumberGroupSeparator = ",";
+            _nfIperformance.NumberDecimalSeparator = ".";
+            _nfIperformance.NumberDecimalDigits = 0;
         }
 
 
@@ -38,31 +38,31 @@ namespace osu_tourney_tool.UI.Controls
         public enum Modifiers
         {
             None = 0,
-            NF = 1,
-            EZ = 2,
+            NoFail = 1,
+            Easy = 2,
             NoVideo = 4,
-            HD = 8,
-            HR = 16,
-            SD = 32,
-            DT = 64,
-            RX = 128,
-            HT = 256,
-            NC = 512, // Only set along with DoubleTime. i.e: NC only gives 576
-            FL = 1024,
+            Hidden = 8,
+            HardRock = 16,
+            SuddenDeath = 32,
+            DoubleTime = 64,
+            Relax = 128,
+            HalfTime = 256,
+            Nightcore = 512, // Only set along with DoubleTime. i.e: Nightcore only gives 576
+            Flashlight = 1024,
             Auto = 2048,
-            SO = 4096,
-            AP = 8192,  // Autopilot?
-            PF = 16384, // Only set along with SuddenDeath. i.e: PF only gives 16416  
+            SpunOut = 4096,
+            AutoPilot = 8192,  // Autopilot?
+            Perfect = 16384, // Only set along with SuddenDeath. i.e: Perfect only gives 16416  
             Key4 = 32768,
             Key5 = 65536,
             Key6 = 131072,
             Key7 = 262144,
             Key8 = 524288,
-            keyMod = Key4 | Key5 | Key6 | Key7 | Key8,
-            FI = 1048576,
+            KeyMod = Key4 | Key5 | Key6 | Key7 | Key8,
+            FadeIn = 1048576,
             Random = 2097152,
             LastMod = 4194304,
-            FreeModAllowed = NF | EZ | HD | HR | SD | FL | FI | RX | AP | SO | keyMod,
+            FreeModAllowed = NoFail | Easy | Hidden | HardRock | SuddenDeath | Flashlight | FadeIn | Relax | AutoPilot | SpunOut | KeyMod,
             Key9 = 16777216,
             Key10 = 33554432,
             Key1 = 67108864,
@@ -83,29 +83,29 @@ namespace osu_tourney_tool.UI.Controls
             var marginLeft = 0.0;
             if (mods != Modifiers.None)
             {
-                Regex regex = new Regex("([A-z]{2,})");
+                var regex = new Regex("([A-z]{2,})");
                 Debug.WriteLine(mods.ToString());
-                MatchCollection matches = regex.Matches(mods.ToString());
-                List<string> modsList = new List<string>();
+                var matches = regex.Matches(mods.ToString());
+                var modsList = new List<string>();
                 foreach (Match match in matches)
                 {
                     modsList.Add(match.Value);
                 }
-                if (modsList.Contains("PF"))
+                if (modsList.Contains("Perfect"))
                 {
-                    modsList.Remove("SD");
+                    modsList.Remove("SuddenDeath");
                 }
-                if (modsList.Contains("NC"))
+                if (modsList.Contains("Nightcore"))
                 {
-                    modsList.Remove("DT");
+                    modsList.Remove("DoubleTime");
                 }
-                foreach (string modImage in modsList)
+                foreach (var modImage in modsList)
                 {
-                    BitmapImage logo = new BitmapImage();
+                    var logo = new BitmapImage();
                     logo.BeginInit();
                     logo.UriSource = new Uri($"pack://application:,,,/osu-tourney-tool;component/Assets/Mods/{modImage}.png");
                     logo.EndInit();
-                    Image modPic = new Image()
+                    var modPic = new Image()
                     {
                         Height = 18.0,
                         Margin = new Thickness(marginLeft,0,0,0),
@@ -124,7 +124,7 @@ namespace osu_tourney_tool.UI.Controls
         
         public Modifiers Mods
         {
-            get { return (Modifiers)GetValue(ModsProperty); }
+            get => (Modifiers)GetValue(ModsProperty);
             set { SetValue(ModsProperty, value);
                 AddModPictures(value);
             }
@@ -138,7 +138,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public string Username
         {
-            get { return (string)GetValue(UsernameProperty); }
+            get => (string)GetValue(UsernameProperty);
             set { SetValue(UsernameProperty, value);
                 UsernameLabel.Content = value;
             }
@@ -150,7 +150,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public double Accuracy
         {
-            get { return (double)GetValue(AccuracyProperty); }
+            get => (double)GetValue(AccuracyProperty);
             set { SetValue(AccuracyProperty, value);
                 AccLabel.Content = Math.Round(value, 2) + "%";
             }
@@ -164,7 +164,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public int MaxCombo
         {
-            get { return (int)GetValue(MaxComboProperty); }
+            get => (int)GetValue(MaxComboProperty);
             set { SetValue(MaxComboProperty, value);
                 ComboLabel.Content = value + "x";
             }
@@ -178,7 +178,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public int Count300
         {
-            get { return (int)GetValue(Count300Property); }
+            get => (int)GetValue(Count300Property);
             set { SetValue(Count300Property, value);
                 Count300Label.Content = value;
             }
@@ -192,7 +192,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public int Count100
         {
-            get { return (int)GetValue(Count100Property); }
+            get => (int)GetValue(Count100Property);
             set { SetValue(Count100Property, value);
                 Count100Label.Content = value;
             }
@@ -206,7 +206,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public int Count50
         {
-            get { return (int)GetValue(Count50Property); }
+            get => (int)GetValue(Count50Property);
             set { SetValue(Count50Property, value);
                 Count50Label.Content = value;
             }
@@ -220,7 +220,7 @@ namespace osu_tourney_tool.UI.Controls
 
         public int CountMiss
         {
-            get { return (int)GetValue(CountMissProperty); }
+            get => (int)GetValue(CountMissProperty);
             set { SetValue(CountMissProperty, value);
                 CountMissLabel.Content = value;
             }
@@ -234,9 +234,9 @@ namespace osu_tourney_tool.UI.Controls
 
         public long Score
         {
-            get { return (long)GetValue(ScoreProperty); }
+            get => (long)GetValue(ScoreProperty);
             set { SetValue(ScoreProperty, value);
-                ScoreLabel.Content = value.ToString("n",NFIperformance);
+                ScoreLabel.Content = value.ToString("n",_nfIperformance);
             }
         }
 
@@ -247,19 +247,21 @@ namespace osu_tourney_tool.UI.Controls
         
         public Teams Team
         {
-            get { return (Teams)GetValue(TeamProperty); }
-            set { SetValue(TeamProperty, value);
-                if (value == Teams.FreeForAll)
+            get => (Teams)GetValue(TeamProperty);
+            set
+            {
+                SetValue(TeamProperty, value);
+                switch (value)
                 {
-                    triangle.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ef6da7"));
-                }
-                else if (value == Teams.Blue)
-                {
-                    triangle.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#2287a4"));
-                }
-                else if (value == Teams.Red)
-                {
-                    triangle.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ba1d7b"));
+                    case Teams.FreeForAll:
+                        triangle.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#ef6da7");
+                        break;
+                    case Teams.Blue:
+                        triangle.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#2287a4");
+                        break;
+                    case Teams.Red:
+                        triangle.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#ba1d7b");
+                        break;
                 }
             }
         }
@@ -272,11 +274,11 @@ namespace osu_tourney_tool.UI.Controls
 
         public string Country
         {
-            get { return (string)GetValue(CountryProperty); }
+            get => (string)GetValue(CountryProperty);
             set { SetValue(CountryProperty, value);
                 try
                 {
-                    BitmapImage logo = new BitmapImage();
+                    var logo = new BitmapImage();
                     logo.BeginInit();
                     logo.UriSource = new Uri($"pack://application:,,,/osu-tourney-tool;component/Assets/Flags/{value}.png");
                     logo.EndInit();
@@ -284,9 +286,9 @@ namespace osu_tourney_tool.UI.Controls
                 }
                 catch (Exception)
                 {
-                    BitmapImage logo = new BitmapImage();
+                    var logo = new BitmapImage();
                     logo.BeginInit();
-                    logo.UriSource = new Uri($"pack://application:,,,/osu-tourney-tool;component/Assets/Flags/unknown.png");
+                    logo.UriSource = new Uri("pack://application:,,,/osu-tourney-tool;component/Assets/Flags/unknown.png");
                     logo.EndInit();
                     CountryImage.Source = logo;
                 }
@@ -301,16 +303,11 @@ namespace osu_tourney_tool.UI.Controls
 
         public bool Pass
         {
-            get { return (bool)GetValue(PassProperty); }
-            set { SetValue(PassProperty, value);
-                if (value)
-                {
-                    FailedLabel.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-                    FailedLabel.Visibility = Visibility.Visible;
-                }
+            get => (bool)GetValue(PassProperty);
+            set
+            {
+                SetValue(PassProperty, value);
+                FailedLabel.Visibility = value ? Visibility.Hidden : Visibility.Visible;
             }
         }
 

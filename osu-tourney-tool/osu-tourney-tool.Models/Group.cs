@@ -11,9 +11,9 @@ namespace osu_tourney_tool.Models
     public class Group
     {
         [JsonProperty(PropertyName = "id")]
-        public int GroupID{get;set;}
+        public int GroupId{get;set;}
         [JsonProperty(PropertyName = "team_ids")]
-        public List<int> TeamIDList{get;set;}
+        public List<int> TeamIdList{get;set;}
         [JsonProperty(PropertyName = "matches")]
         public List<Match> Matches{get;set;}
     }
